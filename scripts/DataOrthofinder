@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Edited by Emily J Tallerday, Nov. 2021
+
 # The command to run this script is ./scripts/DataOrthofinder [version of OrthFinder, either 2.4.1 or 2.3.8] [Full path to correct species tree]
 # This is structured as an if/elif/then statement to allow you to choose the version of OrthoFinder you want to run on Cornell's BioHPC.
 if [[ $1 == '2.4.1' ]]; then
