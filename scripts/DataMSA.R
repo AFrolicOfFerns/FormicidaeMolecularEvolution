@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+## Edited by Emily J Tallerday, Nov. 2021
 
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args)==0) {
@@ -12,7 +13,8 @@ if (length(args)==0) {
 
 # This script will reshuffle the Orthofinder MSA files so that instead of one file per orthogroup with all species present, we have one file per specise with all orthogroups present. 
 
-library(phylotools)
+install.packages("phylotools")
+library(phylotools) # must download at first use
 library(plyr)
 library(tidyverse)
 
@@ -25,9 +27,10 @@ abbreviations <- speciesInfo$V4
 
 # First make a working directory and copy the folder with the MSA files there (THIS WILL NEED TO BE A VALUE SET ON THE COMMAND LINE). 
 dir.create("./6_1_SpeciesMSA")
+## having trouble changing the wd here - making some adjustments
 file.copy(args[2], "./6_1_SpeciesMSA", recursive = TRUE)
 # Concatenate all of the MSA files into a single file:
-setwd("./6_1_SpeciesMSA/MultipleSequenceAlignments")
+setwd("./6_1_SpeciesMSA/")
 msaFiles <- list.files(pattern = "*.fa")
 allMSAFiles <- bind_rows(lapply(msaFiles, read.fasta))
 
